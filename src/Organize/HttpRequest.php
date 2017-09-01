@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wangyi
- * Date: 2017/9/1
- * Time: 下午5:31
+ * User: wangyi@kezhanwang.cn
  */
 
 namespace Organize;
@@ -12,9 +9,8 @@ use Organize\Exceptions\OrganizeExceptions;
 
 class HttpRequest
 {
-    static function sendRequest($client, $url, $method, $body = null, $times = 1)
+    public static function sendRequest($client, $url, $method, $body = null, $times = 1)
     {
-        self::log($client, "Send " . $method . " " . $url . ", body:" . json_encode($body) . ", times:" . $times);
         if (!defined('CURL_HTTP_VERSION_2_0')) {
             define('CURL_HTTP_VERSION_2_0', 3);
         }
@@ -25,16 +21,7 @@ class HttpRequest
         curl_setopt($ch, CURLOPT_USERAGENT, Config::USER_AGENT);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, Config::CONNECT_TIMEOUT);  // 连接建立最长耗时
         curl_setopt($ch, CURLOPT_TIMEOUT, Config::READ_TIMEOUT);  // 请求最长耗时
-        // 设置SSL版本 1=CURL_SSLVERSION_TLSv1, 不指定使用默认值,curl会自动获取需要使用的CURL版本
-        // curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // 如果报证书相关失败,可以考虑取消注释掉该行,强制指定证书版本
-        //curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'TLSv1');
-        // 设置Basic认证
-        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_USERPWD, $client->getAuthStr());
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
-
         // 设置Post参数
         if ($method === Config::HTTP_POST) {
             curl_setopt($ch, CURLOPT_POST, true);
@@ -62,7 +49,7 @@ class HttpRequest
 
 
         if ($errorCode) {
-            $retries = $client->getRetryTimes();
+            $retries = 10;
             if ($times < $retries) {
                 return self::sendRequest($client, $url, $method, $body, ++$times);
             } else {

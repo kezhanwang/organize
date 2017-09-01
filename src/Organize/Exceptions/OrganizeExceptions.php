@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wangyi
- * Date: 2017/9/1
- * Time: 下午5:36
+ * User: wangyi@kezhanwang.cn
  */
 
 namespace Organize\Exceptions;
