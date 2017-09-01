@@ -43,7 +43,7 @@ use Organize\Client as Organize;
 OR
 
 ```php
-$client = new \Organize\Client($merchant, $signature, $data, $rsaPublicFile,);
+$client = new \Organize\Client($merchant, $signature, $data, $rsaPublicFile);
 ```
 
 #### 简单推送
