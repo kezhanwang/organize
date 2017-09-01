@@ -19,7 +19,7 @@ class Client
     public function __construct($merchant, $signature, $data, $rsaPublicFile, $retryTimes = Config::DEFAULT_MAX_RETRY_TIMES)
     {
         if (!is_string($merchant) || !is_string($signature) || !is_string($rsaPublicFile) || !is_array($data) || !is_numeric($retryTimes)) {
-            throw new OrganizeExceptions();
+            throw new OrganizeExceptions(ERR_PARAMS, ERR_PARAMS);
         }
         $this->merchant = $merchant;
         $this->signature = $signature;
@@ -28,7 +28,7 @@ class Client
         if (!is_null($rsaPublicFile) && file_exists($rsaPublicFile)) {
             $this->rsaPublicFile = $rsaPublicFile;
         } else {
-            throw new OrganizeExceptions();
+            throw new OrganizeExceptions(ERR_FILE_NOT_EXISTS_CONTENT, ERR_FILE_NOT_EXISTS);
         }
 
         if (!is_null($retryTimes)) {

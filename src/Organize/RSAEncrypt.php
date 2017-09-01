@@ -13,11 +13,11 @@ class RSAEncrypt
     public static function encrypt($string, $rsaPublicFilePath)
     {
         if (!is_string($string)) {
-            throw new OrganizeExceptions();
+            throw new OrganizeExceptions(ERR_PARAMS_CONTENT, ERR_PARAMS);
         }
 
         if (!file_exists($rsaPublicFilePath)) {
-            throw new OrganizeExceptions();
+            throw new OrganizeExceptions(ERR_FILE_NOT_EXISTS_CONTENT, ERR_FILE_NOT_EXISTS);
         }
 
         $maxlength = 117;
