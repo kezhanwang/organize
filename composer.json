@@ -3,6 +3,7 @@
     "description": "kezhanwang.cn for organize SDk",
     "type": "library",
     "homepage": "https://github.com/kezhanwang/organize",
+    "version": "1.0.1",
     "license": "MIT",
     "authors": [
         {
