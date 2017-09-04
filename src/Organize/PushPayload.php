@@ -40,7 +40,7 @@ class PushPayload
         }
 
         $jsonData = json_encode($this->data);
-        return RSAEncrypt::encrypt($jsonData, $this->client->getPatams('rsaPublicFile'));
+        return RSAEncrypt::encrypt($jsonData, $this->client->getParams('rsaPublicFile'));
     }
 
     private function createSignature()
