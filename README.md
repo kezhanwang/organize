@@ -11,7 +11,7 @@
 
 ```json
 "require": {
-    "kezhanwang/organize": "v1.0.*"
+    "kezhanwang/organize": "dev-master"
 }
 ```
 
