@@ -79,7 +79,7 @@ class PushPayload
         if (is_null($this->url)) {
             $this->setProduction();
         }
-        $result = HttpRequest::sendRequest($this->url, Config::HTTP_POST, json_encode($this->request));
+        $result = HttpRequest::sendRequest($this->url, Config::HTTP_POST, $this->request);
         return $result;
     }
 }
