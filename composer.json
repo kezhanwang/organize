@@ -5,10 +5,16 @@
     "license": "MIT",
     "authors": [
         {
+          "name": "郝翔",
+          "email": "haoxiang@kezhanwang.cn"
+        },
+        {
             "name": "王毅",
             "email": "wangyi@kezhanwang.cn"
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "php": ">=5.3.0"
+    }
 }
