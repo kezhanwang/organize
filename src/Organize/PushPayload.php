@@ -54,14 +54,14 @@ class PushPayload
     {
         switch ($production) {
             case Config::SERVER_ONLINE:
-                $this->url = 'http://pay.kezhanwang.cn/organize/service/api';
+                $this->url = 'http://pay.kezhanwang.cn/organize/service/index';
                 break;
             case Config::SERVER_UAT:
             case Config::SERVER_TEST:
-                $this->url = 'http://open.pay.kezhanwang.cn/organize/service/api';
+                $this->url = 'http://open.pay.kezhanwang.cn/organize/service/index';
                 break;
             default:
-                $this->url = 'http://open.pay.kezhanwang.cn/organize/service/api';
+                $this->url = 'http://open.pay.kezhanwang.cn/organize/service/index';
                 break;
         }
     }
@@ -80,6 +80,6 @@ class PushPayload
             $this->setProduction();
         }
         $result = HttpRequest::sendRequest($this->url, Config::HTTP_POST, json_encode($this->request));
-        return json_decode($result, true);
+        return $result;
     }
 }
